@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6cd14d49ce8b25b4dbd91c42f8c84f20
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - nameInput: {instanceID: 0}
+  - SavedSnirtsMenu: {instanceID: 0}
+  - SaveFileUI: {fileID: 2043038110311425770, guid: e2cb70a010076b84e9741ca1fa677aee,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
