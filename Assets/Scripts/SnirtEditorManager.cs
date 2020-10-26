@@ -60,48 +60,126 @@ public class SnirtEditorManager : MonoBehaviour
 
             PartDropdowns[i].ChangeDropDownOptions(partNames);
         }
+
+        LoadFile();
     }
 
     #region Save/Load
     public void LoadFile()
     {
+        savedSnirts.Clear();
+        SavedSnirtsMenu.ClearChildren();
+
         try
         {
-            StreamReader reader = new StreamReader(savePath);
-            while (!reader.EndOfStream)
+            using (StreamReader reader = new StreamReader(savePath))
             {
-                savedSnirts.Add(reader.ReadLine());
+                while (!reader.EndOfStream)
+                {
+                    savedSnirts.Add(reader.ReadLine());
+                }
             }
-            reader.Close();
         }
         catch
         {
             // Default a new save to just the default Snirt.
             Debug.LogWarning("No save file found! Creating new save...");
-            File.WriteAllText(savePath, "Snirt,0,0,0,0,D4D4D4,808080,353535,000000");
+            File.WriteAllText(savePath, "Snirt,0,0,0,0,D4D4D4,808080,353535,000000" + Environment.NewLine);
             LoadFile();
         }
 
         // Create Save UI as many times as there are lines.
+        for (int i = 0; i < savedSnirts.Count; i++)
+        {
+            CreateSaveUI(i);
+        }
     }
 
     public void LoadSnirt(int index)
     {
         // Use the array created by the inital loading of the file.
         // Set all values to the snirt at the index and update all ui.
+        string[] snirtTraits = savedSnirts[index].Split(',');
+
+        ChangeName(snirtTraits[0]);
+
+        for (int i = 0; i < CrestFrillTailPattern.Length; i++)
+        {
+            if (int.TryParse(snirtTraits[i + 1], out int part))
+            {
+                ChangePart(part, (SnirtParts)i);
+            }
+            else
+            {
+                ChangePart(0, (SnirtParts)i);
+            }
+        }
+
+        for (int i = 0; i < BodyCrestsPatternEyes.Length; i++)
+        {
+            ChangeColorViaHex(snirtTraits[i + 5], (SnirtColors)i);
+        }
     }
 
     public void SaveSnirt()
-    {   // Make a string out of all the snirt properties.
+    {   
+        // Make a string out of all the snirt properties.
+        string snirtTraits = snirtName;
+
+        if (snirtTraits == "")
+        {
+            snirtTraits = "Unnamed";
+        }
+
+        for (int i = 0; i < activeParts.Length; i++)
+        {
+            snirtTraits += "," + activeParts[i].ToString();
+        }
+
+        for (int i = 0; i < BodyCrestsPatternEyes.Length; i++)
+        {
+            snirtTraits += "," + ColorUtility.ToHtmlStringRGB(BodyCrestsPatternEyes[i].GetColor("_BaseColor"));
+        }
+
         // Save it to the end of the save file.
-        // Create new Save File UI
+        try
+        {
+            using (StreamWriter writer = File.AppendText(savePath))
+            {
+                writer.WriteLine(snirtTraits);
+            }
+        }
+        catch
+        {
+            Debug.LogError("Save failed! Could you be missing a save file?");
+        }
+
+        savedSnirts.Add(snirtTraits);
+
+        // Reload to update the UI
+        LoadFile();
     }
 
-    public void CreateSaveUI()
+    public void CreateSaveUI(int saveLine)
     {
         // Create a new snirtSave UI Element
-        // Update its UI with the proper values.
+        GameObject newSaveSlot = Instantiate(SaveFileUI, SavedSnirtsMenu.gameObject.transform);
+
         // Child the object to the Saved Snirts window.
+        SavedSnirtsMenu.AddChild(newSaveSlot);
+
+        // Update its UI with the proper values.
+        string[] snirtTraits = savedSnirts[saveLine].Split(',');
+
+        List<Color> snirtColors = new List<Color>();
+
+        for (int i = 0; i < BodyCrestsPatternEyes.Length; i++)
+        {
+            ColorUtility.TryParseHtmlString("#" + snirtTraits[i + 5], out Color newCol);
+            snirtColors.Add(newCol);
+        }
+
+        newSaveSlot.GetComponent<SavedSnirtUI>().UpdateUI(snirtTraits[0], saveLine, snirtColors.ToArray(), this);
     }
     #endregion
 
@@ -109,11 +187,12 @@ public class SnirtEditorManager : MonoBehaviour
     public void ChangeName(string newName)
     {
         snirtName = newName;
+        nameInput.text = newName;
     }
 
     public void RandomizeName()
     {
-        int randy = UnityEngine.Random.Range(0, randomName.Length - 1);
+        int randy = UnityEngine.Random.Range(0, randomName.Length);
         nameInput.text = randomName[randy];
     }
     #endregion
@@ -131,18 +210,18 @@ public class SnirtEditorManager : MonoBehaviour
     #endregion
 
     #region Color
-    public void EditColor(Color changeTo, SnirtColors color)
+    public void ChangeColor(Color changeTo, SnirtColors color)
     {
         BodyCrestsPatternEyes[(int)color].SetColor("_BaseColor", changeTo);
         ColorSliders[(int)color].UpdateUI(changeTo);
     }
 
-    public void EditColorViaHex(string changeTo, SnirtColors color)
+    public void ChangeColorViaHex(string changeTo, SnirtColors color)
     {
         bool success = ColorUtility.TryParseHtmlString("#" + changeTo, out Color newCol);
         if (success)
         {
-            EditColor(newCol, color);
+            ChangeColor(newCol, color);
         }
     }
     #endregion

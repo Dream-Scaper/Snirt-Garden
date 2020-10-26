@@ -25,5 +25,10 @@ Material:
     - Vector1_25CD3391: 12
     - Vector1_402D0E42: 0.5
     - Vector1_5F34456: 0.01
+    - _ClipThreshhold: 0
+    - _CloudSize: 12
+    - _ScrollSpeed: 0.01
+    - _VertexWarping: 0.56
     m_Colors:
     - Color_9DB19D8C: {r: 1, g: 0.97614247, b: 0.9009434, a: 1}
+    - _BaseColor: {r: 0.99620306, g: 1, b: 0.9386792, a: 1}

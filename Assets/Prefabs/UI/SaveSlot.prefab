@@ -188,8 +188,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snirtName: {fileID: 8423629203634392648}
-  loadButton: {fileID: 0}
-  colorSwatches: []
+  loadButton: {fileID: 2361149392013761680}
+  colorSwatches:
+  - {fileID: 318382863941601987}
+  - {fileID: 1583405759890581691}
+  - {fileID: 2615668351203150}
+  - {fileID: 8224162400314517515}
   manager: {fileID: 0}
 --- !u!1 &2341995819705930883
 GameObject:

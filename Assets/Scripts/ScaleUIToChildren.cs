@@ -34,7 +34,7 @@ public class ScaleUIToChildren : MonoBehaviour
 
             totalNewHeight += verticalPadding * 2;
 
-            trans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, totalNewHeight);
+            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, totalNewHeight);
         }
 
         if (scaleHorizontally)
@@ -49,7 +49,24 @@ public class ScaleUIToChildren : MonoBehaviour
 
             totalNewWidth += horizontalPadding * 2;
 
-            trans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, totalNewWidth);
+            GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, totalNewWidth);
         }
+    }
+
+    public void AddChild(GameObject newChild)
+    {
+        children.Add(newChild);
+
+        Resize();
+    }
+
+    public void ClearChildren()
+    {
+        for (int i = 0; i < children.Count; i++)
+        {
+            Destroy(children[i]);
+        }
+
+        children.Clear();
     }
 }
