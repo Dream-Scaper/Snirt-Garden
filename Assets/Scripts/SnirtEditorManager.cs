@@ -40,6 +40,7 @@ public class SnirtEditorManager : MonoBehaviour
 
     private string savePath;
     private List<string> savedSnirts;
+    private const string defaultSnirt = "Snirt,0,0,0,0,D4D4D4,808080,353535,000000";
 
     private void Awake()
     {
@@ -62,6 +63,7 @@ public class SnirtEditorManager : MonoBehaviour
         }
 
         LoadFile();
+        LoadSnirt(0);
     }
 
     #region Save/Load
@@ -84,7 +86,7 @@ public class SnirtEditorManager : MonoBehaviour
         {
             // Default a new save to just the default Snirt.
             Debug.LogWarning("No save file found! Creating new save...");
-            File.WriteAllText(savePath, "Snirt,0,0,0,0,D4D4D4,808080,353535,000000" + Environment.NewLine);
+            File.WriteAllText(savePath, defaultSnirt + Environment.NewLine);
             LoadFile();
         }
 
@@ -121,10 +123,35 @@ public class SnirtEditorManager : MonoBehaviour
         }
     }
 
+    public void DeleteSnirt(int index)
+    {
+        // Delete the entry in savedSnirts
+        savedSnirts.RemoveAt(index);
+
+        // Re-write save file.
+        File.WriteAllText(savePath, "");
+        try
+        {
+            using (StreamWriter writer = File.AppendText(savePath))
+            {
+                foreach (string save in savedSnirts)
+                {
+                    writer.WriteLine(save);
+                }
+            }
+        }
+        catch
+        {
+            Debug.LogError("Save failed! Could you be missing a save file?");
+        }
+
+        LoadFile();
+    }
+
     public void SaveSnirt()
     {   
         // Make a string out of all the snirt properties.
-        string snirtTraits = snirtName;
+        string snirtTraits = snirtName.Replace(',', ' '); // Just in case there are any commas, replace them with spaces.
 
         if (snirtTraits == "")
         {

@@ -8,6 +8,8 @@ public class SavedSnirtUI : MonoBehaviour
 {
     public TextMeshProUGUI snirtName;
     public Button loadButton;
+    public Button deleteButton;
+    public Button deleteCODAButton;
     public Image[] colorSwatches;
 
     public SnirtEditorManager manager;
@@ -25,5 +27,16 @@ public class SavedSnirtUI : MonoBehaviour
 
         loadButton.onClick.RemoveAllListeners();
         loadButton.onClick.AddListener(delegate { manager.LoadSnirt(index); });
+
+        // The first Snirt in the list can never be deleted in-game.
+        if (index != 0)
+        {
+            deleteButton.onClick.RemoveAllListeners();
+            deleteButton.onClick.AddListener(delegate { manager.DeleteSnirt(index); });
+        }
+        else
+        {
+            Destroy(deleteCODAButton.gameObject);
+        }
     }
 }
