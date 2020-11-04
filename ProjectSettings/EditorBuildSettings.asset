@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SnirtEditor.unity
     guid: b8bf3aed5af31fe4cb63818a665413c7
+  - enabled: 1
+    path: Assets/Scenes/ShaderShowoff.unity
+    guid: e6304a6c53b361946bd90a7f0be4602c
   m_configObjects: {}
