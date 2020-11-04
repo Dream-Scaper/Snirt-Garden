@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c7e557ed849054fa7a661bfa88bc4a, type: 3}
+  m_Name: Tails
+  m_EditorClassIdentifier: 
+  Parts:
+  - {fileID: 11400000, guid: 7025572be0e65094695785012a82f8e5, type: 2}
+  - {fileID: 11400000, guid: 58e92006e252b0649baa11e458455b7d, type: 2}
+  - {fileID: 11400000, guid: 5e5d682fd4f8f69439db935b7cb727da, type: 2}
+  - {fileID: 11400000, guid: 1a33d23bc92630e41a0744202d799668, type: 2}
+  - {fileID: 11400000, guid: ca2cf854f74f46e4e9d1f52b356ebbc8, type: 2}
+  - {fileID: 11400000, guid: 0f32212bc6ef00c41971559d1d6a0ab3, type: 2}
+  - {fileID: 11400000, guid: 481a08c29c60ee940b7a8c9b835f8db6, type: 2}
+  - {fileID: 11400000, guid: 88136a1217f862f4889b49051a45d7ee, type: 2}
+  - {fileID: 11400000, guid: 3430e1b0998ded54b965ae30e537eeb3, type: 2}
+  - {fileID: 11400000, guid: 55a9a06041a433546910f57330a82476, type: 2}

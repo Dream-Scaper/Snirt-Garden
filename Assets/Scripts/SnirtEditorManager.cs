@@ -21,10 +21,15 @@ public class SnirtEditorManager : MonoBehaviour
     public Material[] BodyCrestsPatternEyes;
 
     [Header("Part Lists")]
-    public SnirtPart[] Crests;
-    public SnirtPart[] Frills;
-    public SnirtPart[] Tails;
-    public SnirtPart[] Patterns;
+    //public SnirtPart[] Crests;
+    //public SnirtPart[] Frills;
+    //public SnirtPart[] Tails;
+    //public SnirtPart[] Patterns;
+
+    public PartListSO Crests;
+    public PartListSO Frills;
+    public PartListSO Tails;
+    public PartListSO Patterns;
 
     private SnirtPart[][] AllParts;
     private int[] activeParts = new int[4];
@@ -48,7 +53,7 @@ public class SnirtEditorManager : MonoBehaviour
         savedSnirts = new List<string>();
 
         // Set up dropdowns to be fully populated with part options.
-        AllParts = new SnirtPart[][] { Crests, Frills, Tails, Patterns };
+        AllParts = new SnirtPart[][] { Crests.Parts, Frills.Parts, Tails.Parts, Patterns.Parts };
 
         for (int i = 0; i < AllParts.Length; i++)
         {
