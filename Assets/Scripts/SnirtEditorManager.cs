@@ -65,7 +65,6 @@ public class SnirtEditorManager : MonoBehaviour
         // Load from file. 
         SnirtSaveLoader.LoadFile();
 
-        SavedSnirtsMenu.ClearChildren();
         PopulateSaveUI();
     }
 
@@ -126,11 +125,15 @@ public class SnirtEditorManager : MonoBehaviour
             snirtTraits += "," + ColorUtility.ToHtmlStringRGB(BodyCrestsPatternEyes[i].GetColor("_BaseColor"));
         }
 
-        SnirtSaveLoader.SaveSnirt(snirtTraits + Environment.NewLine);
+        SnirtSaveLoader.SaveSnirt(snirtTraits);
+
+        PopulateSaveUI();
     }
 
     private void PopulateSaveUI()
     {
+        SavedSnirtsMenu.ClearChildren();
+
         // Create Save UI as many times as there are lines.
         for (int i = 0; i < SnirtSaveLoader.savedSnirts.Count; i++)
         {
