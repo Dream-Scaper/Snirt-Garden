@@ -21,17 +21,12 @@ public class SnirtEditorManager : MonoBehaviour
     public Material[] BodyCrestsPatternEyes;
 
     [Header("Part Lists")]
-    //public SnirtPart[] Crests;
-    //public SnirtPart[] Frills;
-    //public SnirtPart[] Tails;
-    //public SnirtPart[] Patterns;
-
     public PartListSO Crests;
     public PartListSO Frills;
     public PartListSO Tails;
     public PartListSO Patterns;
 
-    private SnirtPart[][] AllParts;
+    private SnirtPartSO[][] AllParts;
     private int[] activeParts = new int[4];
 
     [Header("UI Elements")]
@@ -43,17 +38,10 @@ public class SnirtEditorManager : MonoBehaviour
     [Header("Required Prefabs")]
     public GameObject SaveFileUI;
 
-    private string savePath;
-    private List<string> savedSnirts;
-    private const string defaultSnirt = "Snirt,0,0,0,0,D4D4D4,808080,353535,000000";
-
     private void Awake()
     {
-        savePath = Application.persistentDataPath + "/savedSnirts.txt";
-        savedSnirts = new List<string>();
-
         // Set up dropdowns to be fully populated with part options.
-        AllParts = new SnirtPart[][] { Crests.Parts, Frills.Parts, Tails.Parts, Patterns.Parts };
+        AllParts = new SnirtPartSO[][] { Crests.Parts, Frills.Parts, Tails.Parts, Patterns.Parts };
 
         for (int i = 0; i < AllParts.Length; i++)
         {
@@ -74,39 +62,20 @@ public class SnirtEditorManager : MonoBehaviour
     #region Save/Load
     public void LoadFile()
     {
-        savedSnirts.Clear();
+        // Load from file. 
+        SnirtSaveLoader.LoadFile();
+
         SavedSnirtsMenu.ClearChildren();
-
-        try
-        {
-            using (StreamReader reader = new StreamReader(savePath))
-            {
-                while (!reader.EndOfStream)
-                {
-                    savedSnirts.Add(reader.ReadLine());
-                }
-            }
-        }
-        catch
-        {
-            // Default a new save to just the default Snirt.
-            Debug.LogWarning("No save file found! Creating new save...");
-            File.WriteAllText(savePath, defaultSnirt + Environment.NewLine);
-            LoadFile();
-        }
-
-        // Create Save UI as many times as there are lines.
-        for (int i = 0; i < savedSnirts.Count; i++)
-        {
-            CreateSaveUI(i);
-        }
+        PopulateSaveUI();
     }
 
     public void LoadSnirt(int index)
     {
+        string snirtData = SnirtSaveLoader.savedSnirts[index];
+
         // Use the array created by the inital loading of the file.
         // Set all values to the snirt at the index and update all ui.
-        string[] snirtTraits = savedSnirts[index].Split(',');
+        string[] snirtTraits = snirtData.Split(',');
 
         ChangeName(snirtTraits[0]);
 
@@ -130,27 +99,11 @@ public class SnirtEditorManager : MonoBehaviour
 
     public void DeleteSnirt(int index)
     {
-        // Delete the entry in savedSnirts
-        savedSnirts.RemoveAt(index);
+        // Just a wrapper function.
+        SnirtSaveLoader.DeleteSnirt(index);
 
-        // Re-write save file.
-        File.WriteAllText(savePath, "");
-        try
-        {
-            using (StreamWriter writer = File.AppendText(savePath))
-            {
-                foreach (string save in savedSnirts)
-                {
-                    writer.WriteLine(save);
-                }
-            }
-        }
-        catch
-        {
-            Debug.LogError("Save failed! Could you be missing a save file?");
-        }
-
-        LoadFile();
+        // Reload UI.
+        PopulateSaveUI();
     }
 
     public void SaveSnirt()
@@ -173,26 +126,19 @@ public class SnirtEditorManager : MonoBehaviour
             snirtTraits += "," + ColorUtility.ToHtmlStringRGB(BodyCrestsPatternEyes[i].GetColor("_BaseColor"));
         }
 
-        // Save it to the end of the save file.
-        try
-        {
-            using (StreamWriter writer = File.AppendText(savePath))
-            {
-                writer.WriteLine(snirtTraits);
-            }
-        }
-        catch
-        {
-            Debug.LogError("Save failed! Could you be missing a save file?");
-        }
-
-        savedSnirts.Add(snirtTraits);
-
-        // Reload to update the UI
-        LoadFile();
+        SnirtSaveLoader.SaveSnirt(snirtTraits + Environment.NewLine);
     }
 
-    public void CreateSaveUI(int saveLine)
+    private void PopulateSaveUI()
+    {
+        // Create Save UI as many times as there are lines.
+        for (int i = 0; i < SnirtSaveLoader.savedSnirts.Count; i++)
+        {
+            CreateSaveUI(SnirtSaveLoader.savedSnirts[i], i);
+        }
+    }
+
+    public void CreateSaveUI(string snirtData, int index)
     {
         // Create a new snirtSave UI Element
         GameObject newSaveSlot = Instantiate(SaveFileUI, SavedSnirtsMenu.gameObject.transform);
@@ -201,7 +147,7 @@ public class SnirtEditorManager : MonoBehaviour
         SavedSnirtsMenu.AddChild(newSaveSlot);
 
         // Update its UI with the proper values.
-        string[] snirtTraits = savedSnirts[saveLine].Split(',');
+        string[] snirtTraits = snirtData.Split(',');
 
         List<Color> snirtColors = new List<Color>();
 
@@ -211,7 +157,7 @@ public class SnirtEditorManager : MonoBehaviour
             snirtColors.Add(newCol);
         }
 
-        newSaveSlot.GetComponent<SavedSnirtUI>().UpdateUI(snirtTraits[0], saveLine, snirtColors.ToArray(), this);
+        newSaveSlot.GetComponent<SavedSnirtUI>().UpdateUI(snirtTraits[0], index, snirtColors.ToArray(), this);
     }
     #endregion
 

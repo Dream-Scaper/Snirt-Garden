@@ -16,22 +16,15 @@ public class SpawnRandomSnirt : MonoBehaviour
 
     public Transform[] spawnLocations;
 
-    private string savePath;
-    private List<string> savedSnirts;
-    private const string defaultSnirt = "Snirt,0,0,0,0,D4D4D4,808080,353535,000000";
-
     void Start()
     {
-        savePath = Application.persistentDataPath + "/savedSnirts.txt";
-        savedSnirts = new List<string>();
-
-        LoadFile();
+        SnirtSaveLoader.LoadFile();
 
         foreach (Transform spawnPoint in spawnLocations)
         {
-            int randy = UnityEngine.Random.Range(0, savedSnirts.Count);
+            int randy = UnityEngine.Random.Range(0, SnirtSaveLoader.savedSnirts.Count);
 
-            string[] snirtTraits = savedSnirts[randy].Split(',');
+            string[] snirtTraits = SnirtSaveLoader.savedSnirts[randy].Split(',');
 
             SpawnedSnirt currentSnirt = Instantiate(snirtPrefab, spawnPoint.position, spawnPoint.rotation).GetComponent<SpawnedSnirt>();
 
@@ -52,29 +45,4 @@ public class SpawnRandomSnirt : MonoBehaviour
             currentSnirt.ChangeMaterials(snirtColors[0], snirtColors[1], snirtColors[2], snirtColors[3]);
         }
     }
-
-    public void LoadFile()
-    {
-        savedSnirts.Clear();
-
-        try
-        {
-            using (StreamReader reader = new StreamReader(savePath))
-            {
-                while (!reader.EndOfStream)
-                {
-                    savedSnirts.Add(reader.ReadLine());
-                }
-            }
-        }
-        catch
-        {
-            // Default a new save to just the default Snirt.
-            Debug.LogWarning("No save file found! Creating new save...");
-            File.WriteAllText(savePath, defaultSnirt + Environment.NewLine);
-            LoadFile();
-        }
-    }
-
-
 }

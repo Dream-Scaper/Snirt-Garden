@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8398222422507710657}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.694, z: -0.987}
+  m_LocalPosition: {x: -1, y: 1.6, z: -2.4}
   m_LocalScale: {x: 1.02, y: 1.02, z: 1.02}
   m_Children: []
   m_Father: {fileID: 8398222422512261604}
@@ -451,6 +451,10 @@ MonoBehaviour:
   originalCrestsMat: {fileID: 2100000, guid: ec0ba76024aede145877782e46c9c4b6, type: 2}
   originalPatternMat: {fileID: 2100000, guid: a1842761f5e633348b58c2b829424cee, type: 2}
   originalEyesMat: {fileID: 2100000, guid: f6554df7d94e8f14db6f333bb8d3b61c, type: 2}
+  Crest: {fileID: 8398222423357739219}
+  Frill: {fileID: 8398222422820149600}
+  Tail: {fileID: 8398222422507710658}
+  Pattern: {fileID: 4519307797266025041}
   BodyParts:
   - {fileID: 8398222422512261607}
   - {fileID: 8398222422742440051}
@@ -468,10 +472,6 @@ MonoBehaviour:
   - {fileID: 6810694455677174208}
   EyeParts:
   - {fileID: 8398222422556708204}
-  Crest: {fileID: 8398222423357739219}
-  Frill: {fileID: 8398222422820149600}
-  Tail: {fileID: 8398222422507710658}
-  Pattern: {fileID: 4519307797266025041}
 --- !u!1 &8398222422556708202
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8398222422556708202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.6, y: 0.6, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8398222422742440048}
@@ -659,7 +659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8398222422820149631}
   m_LocalRotation: {x: 0.2461532, y: 0, z: 0, w: 0.96923095}
-  m_LocalPosition: {x: 0.3, y: -0.315, z: -0.973}
+  m_LocalPosition: {x: -0.4995, y: 0.055, z: -1.534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8398222422742440048}
