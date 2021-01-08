@@ -13,8 +13,8 @@ public class SnirtAnimController : MonoBehaviour
 
     }
 
-    public float timeToFidgetAnimBase = 45.0f;
-    public float timeToFidgetAnimRandom = 15.0f;
+    public float fidgetIntervalBase = 10.0f;
+    public float fidgetIntervalAddRandom = 15.0f;
 
     [Header("DEBUG ONLY. DO NOT EDIT.")]
     public float countdownToFidgetAnim;
@@ -26,7 +26,7 @@ public class SnirtAnimController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         // Setup timer
-        countdownToFidgetAnim = timeToFidgetAnimBase;
+        countdownToFidgetAnim = fidgetIntervalBase;
     }
 
     void Update()
@@ -41,7 +41,7 @@ public class SnirtAnimController : MonoBehaviour
             anim.SetTrigger(SnirtAnimParams.FidgetPrefix + Random.Range(0, SnirtAnimParams.fidgetAnimAmount).ToString());
 
             // Reset timer.
-            countdownToFidgetAnim = timeToFidgetAnimBase + Random.Range(0, timeToFidgetAnimRandom);
+            countdownToFidgetAnim = fidgetIntervalBase + Random.Range(0, fidgetIntervalAddRandom);
         }
     }
 }

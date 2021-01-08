@@ -297,8 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57efa90b5e99cb41885640412cbf99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToFidgetAnimBase: 15
-  timeToFidgetAnimRandom: 10
+  fidgetIntervalBase: 10
+  fidgetIntervalAddRandom: 15
   countdownToFidgetAnim: 0
 --- !u!1 &4090372049573289366
 GameObject:

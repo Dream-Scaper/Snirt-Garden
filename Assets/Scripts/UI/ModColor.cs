@@ -14,6 +14,7 @@ public class ModColor : MonoBehaviour
     public Color startingColor;
 
     public TMP_InputField hexEntry;
+    public string hexEntryPlaceholder = "Hex...";
 
     public Slider[] sliders;
 
@@ -21,6 +22,8 @@ public class ModColor : MonoBehaviour
     {
         colorSwatch.color = updateTo;
         EditSliders(updateTo);
+
+        DisplayPlaceholderText();
     }
 
     public void EditColor()
@@ -50,5 +53,15 @@ public class ModColor : MonoBehaviour
     public void ResetColors()
     {
         manager.ChangeColor(startingColor, color);
+    }
+
+    public void DisplayCurrentColor()
+    {
+        hexEntry.text = ColorUtility.ToHtmlStringRGB(colorSwatch.color);
+    }
+
+    public void DisplayPlaceholderText()
+    {
+        hexEntry.placeholder.GetComponent<TextMeshProUGUI>().text = hexEntryPlaceholder + " " + ColorUtility.ToHtmlStringRGB(colorSwatch.color);
     }
 }

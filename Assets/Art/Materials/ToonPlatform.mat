@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stars
-  m_Shader: {fileID: -6465566751694194690, guid: 0e4c1eaeaeb7f3b44a726ba2c9bd4e38,
+  m_Name: ToonPlatform
+  m_Shader: {fileID: -6465566751694194690, guid: 7484f92fea119b84d95611dd10af68cf,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -19,11 +19,13 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _BaseTexture:
+        m_Texture: {fileID: 2800000, guid: ae7d101032972ed4c91c3c434f82b2c1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Phase: 0
-    - _StarAmount: 105.27
-    - _StarSize: 40
-    - _StarSpacing: 125.07
+    - _Smoothness: 0.5
     m_Colors:
-    - _StarColor: {r: 0.7877358, g: 1, b: 0.9533851, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Specular: {r: 1, g: 1, b: 1, a: 0}

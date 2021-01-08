@@ -15,10 +15,10 @@ public class SnirtEditorManager : MonoBehaviour
     public string[] randomName;
 
     [Header("Snirt Game Object Parts")]
-    public GameObject[] CrestFrillTailPattern;
+    public GameObject[] PartGameObjects;
 
     [Header("Editable Materials")]
-    public Material[] BodyCrestsPatternEyes;
+    public Material[] PartMaterials;
 
     [Header("Part Lists")]
     public PartListSO Crests;
@@ -78,7 +78,7 @@ public class SnirtEditorManager : MonoBehaviour
 
         ChangeName(snirtTraits[0]);
 
-        for (int i = 0; i < CrestFrillTailPattern.Length; i++)
+        for (int i = 0; i < PartGameObjects.Length; i++)
         {
             if (int.TryParse(snirtTraits[i + 1], out int part))
             {
@@ -90,7 +90,7 @@ public class SnirtEditorManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < BodyCrestsPatternEyes.Length; i++)
+        for (int i = 0; i < PartMaterials.Length; i++)
         {
             ChangeColorViaHex(snirtTraits[i + 5], (SnirtColors)i);
         }
@@ -120,9 +120,9 @@ public class SnirtEditorManager : MonoBehaviour
             snirtTraits += "," + activeParts[i].ToString();
         }
 
-        for (int i = 0; i < BodyCrestsPatternEyes.Length; i++)
+        for (int i = 0; i < PartMaterials.Length; i++)
         {
-            snirtTraits += "," + ColorUtility.ToHtmlStringRGB(BodyCrestsPatternEyes[i].GetColor("_BaseColor"));
+            snirtTraits += "," + ColorUtility.ToHtmlStringRGB(PartMaterials[i].GetColor("_BaseColor"));
         }
 
         SnirtSaveLoader.SaveSnirt(snirtTraits);
@@ -154,7 +154,7 @@ public class SnirtEditorManager : MonoBehaviour
 
         List<Color> snirtColors = new List<Color>();
 
-        for (int i = 0; i < BodyCrestsPatternEyes.Length; i++)
+        for (int i = 0; i < PartMaterials.Length; i++)
         {
             ColorUtility.TryParseHtmlString("#" + snirtTraits[i + 5], out Color newCol);
             snirtColors.Add(newCol);
@@ -182,7 +182,7 @@ public class SnirtEditorManager : MonoBehaviour
     public void ChangePart(int changeTo, SnirtParts part)
     {
         activeParts[(int)part] = changeTo;
-        if (CrestFrillTailPattern[(int)part].TryGetComponent(out MeshFilter meshF))
+        if (PartGameObjects[(int)part].TryGetComponent(out MeshFilter meshF))
         {
             meshF.sharedMesh = AllParts[(int)part][Mathf.Min(activeParts[(int)part], AllParts[(int)part].Length - 1)].partMesh;
         }
@@ -193,7 +193,7 @@ public class SnirtEditorManager : MonoBehaviour
     #region Color
     public void ChangeColor(Color changeTo, SnirtColors color)
     {
-        BodyCrestsPatternEyes[(int)color].SetColor("_BaseColor", changeTo);
+        PartMaterials[(int)color].SetColor("_BaseColor", changeTo);
         ColorSliders[(int)color].UpdateUI(changeTo);
     }
 
