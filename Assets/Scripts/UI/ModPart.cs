@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ModPart : MonoBehaviour
 {
     public SnirtEditorManager manager;
-    public SnirtEditorManager.SnirtParts part;
+    public int part;
 
     public TMP_Dropdown partsDropdown;
 

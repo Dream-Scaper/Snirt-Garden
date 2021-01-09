@@ -8,8 +8,8 @@ using System.IO;
 
 public class SnirtEditorManager : MonoBehaviour
 {
-    public enum SnirtParts { CREST, FRILL, TAIL, PATTERN }
-    public enum SnirtColors { BODY, CRESTS, PATTERN, EYES }
+    //public enum SnirtParts { CREST, FRILL, TAIL, PATTERN }
+    //public enum SnirtColors { BODY, CRESTS, PATTERN, EYES }
 
     public string snirtName;
     public string[] randomName;
@@ -82,17 +82,17 @@ public class SnirtEditorManager : MonoBehaviour
         {
             if (int.TryParse(snirtTraits[i + 1], out int part))
             {
-                ChangePart(part, (SnirtParts)i);
+                ChangePart(part, i);
             }
             else
             {
-                ChangePart(0, (SnirtParts)i);
+                ChangePart(0, i);
             }
         }
 
         for (int i = 0; i < PartMaterials.Length; i++)
         {
-            ChangeColorViaHex(snirtTraits[i + 5], (SnirtColors)i);
+            ChangeColorViaHex(snirtTraits[i + 5], i);
         }
     }
 
@@ -179,25 +179,25 @@ public class SnirtEditorManager : MonoBehaviour
     #endregion
 
     #region Part
-    public void ChangePart(int changeTo, SnirtParts part)
+    public void ChangePart(int changeTo, int part)
     {
-        activeParts[(int)part] = changeTo;
-        if (PartGameObjects[(int)part].TryGetComponent(out MeshFilter meshF))
+        activeParts[part] = changeTo;
+        if (PartGameObjects[part].TryGetComponent(out MeshFilter meshF))
         {
-            meshF.sharedMesh = AllParts[(int)part][Mathf.Min(activeParts[(int)part], AllParts[(int)part].Length - 1)].partMesh;
+            meshF.sharedMesh = AllParts[part][Mathf.Min(activeParts[part], AllParts[part].Length - 1)].partMesh;
         }
-        PartDropdowns[(int)part].UpdateUI(activeParts[(int)part]);
+        PartDropdowns[part].UpdateUI(activeParts[part]);
     }
     #endregion
 
     #region Color
-    public void ChangeColor(Color changeTo, SnirtColors color)
+    public void ChangeColor(Color changeTo, int color)
     {
-        PartMaterials[(int)color].SetColor("_BaseColor", changeTo);
-        ColorSliders[(int)color].UpdateUI(changeTo);
+        PartMaterials[color].SetColor("_BaseColor", changeTo);
+        ColorSliders[color].UpdateUI(changeTo);
     }
 
-    public void ChangeColorViaHex(string changeTo, SnirtColors color)
+    public void ChangeColorViaHex(string changeTo, int color)
     {
         bool success = ColorUtility.TryParseHtmlString("#" + changeTo, out Color newCol);
         if (success)

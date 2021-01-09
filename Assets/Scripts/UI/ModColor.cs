@@ -7,7 +7,7 @@ using TMPro;
 public class ModColor : MonoBehaviour
 {
     public SnirtEditorManager manager;
-    public SnirtEditorManager.SnirtColors color;
+    public int color;
 
     public Image colorSwatch;
 
