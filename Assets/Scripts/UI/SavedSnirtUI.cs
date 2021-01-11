@@ -20,7 +20,7 @@ public class SavedSnirtUI : MonoBehaviour
 
         snirtName.text = snirtNameTex;
 
-        for (int i = 0; i < colors.Length; i++)
+        for (int i = 0; i < colorSwatches.Length; i++)
         {
             colorSwatches[i].color = colors[i];
         }

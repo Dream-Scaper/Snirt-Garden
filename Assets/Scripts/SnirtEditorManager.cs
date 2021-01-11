@@ -17,8 +17,8 @@ public class SnirtEditorManager : MonoBehaviour
     [Header("Snirt Game Object Parts")]
     public GameObject[] PartGameObjects;
 
-    [Header("Editable Materials")]
-    public Material[] PartMaterials;
+    //[Header("Editable Materials")]
+    //public Material[] PartMaterials;
 
     [Header("Part Lists")]
     public PartListSO Crests;
@@ -37,6 +37,20 @@ public class SnirtEditorManager : MonoBehaviour
 
     [Header("Required Prefabs")]
     public GameObject SaveFileUI;
+
+    [Header("TESTING")]
+    public Action lastAction;
+
+    [System.Serializable]
+    public struct Action
+    {
+        public ActionType type;
+        public int PartModified;
+        public int PartChangedTo;
+        public Color ColorChangedTo;
+
+        public enum ActionType { PART, COLOR/*, NAME*/ };
+    }
 
     private void Awake()
     {
@@ -78,7 +92,7 @@ public class SnirtEditorManager : MonoBehaviour
 
         ChangeName(snirtTraits[0]);
 
-        for (int i = 0; i < PartGameObjects.Length; i++)
+        for (int i = 0; i < activeParts.Length; i++)
         {
             if (int.TryParse(snirtTraits[i + 1], out int part))
             {
@@ -88,9 +102,10 @@ public class SnirtEditorManager : MonoBehaviour
             {
                 ChangePart(0, i);
             }
+
         }
 
-        for (int i = 0; i < PartMaterials.Length; i++)
+        for (int i = 0; i < PartGameObjects.Length; i++)
         {
             ChangeColorViaHex(snirtTraits[i + 5], i);
         }
@@ -120,9 +135,19 @@ public class SnirtEditorManager : MonoBehaviour
             snirtTraits += "," + activeParts[i].ToString();
         }
 
-        for (int i = 0; i < PartMaterials.Length; i++)
+        for (int i = 0; i < PartGameObjects.Length; i++)
         {
-            snirtTraits += "," + ColorUtility.ToHtmlStringRGB(PartMaterials[i].GetColor("_BaseColor"));
+            if (PartGameObjects[i].TryGetComponent(out MeshRenderer meshR))
+            {
+                snirtTraits += "," + ColorUtility.ToHtmlStringRGB(meshR.sharedMaterial.GetColor("_BaseColor"));
+            }
+            else
+            {
+                if (PartGameObjects[i].TryGetComponent(out SkinnedMeshRenderer skinnedMeshR))
+                {
+                    snirtTraits += "," + ColorUtility.ToHtmlStringRGB(skinnedMeshR.sharedMaterial.GetColor("_BaseColor"));
+                }
+            }
         }
 
         SnirtSaveLoader.SaveSnirt(snirtTraits);
@@ -154,7 +179,7 @@ public class SnirtEditorManager : MonoBehaviour
 
         List<Color> snirtColors = new List<Color>();
 
-        for (int i = 0; i < PartMaterials.Length; i++)
+        for (int i = 0; i < PartGameObjects.Length; i++)
         {
             ColorUtility.TryParseHtmlString("#" + snirtTraits[i + 5], out Color newCol);
             snirtColors.Add(newCol);
@@ -186,24 +211,49 @@ public class SnirtEditorManager : MonoBehaviour
         {
             meshF.sharedMesh = AllParts[part][Mathf.Min(activeParts[part], AllParts[part].Length - 1)].partMesh;
         }
+
         PartDropdowns[part].UpdateUI(activeParts[part]);
+        ChangeLastAction(Action.ActionType.PART, part, changeTo, Color.clear);
     }
     #endregion
 
     #region Color
-    public void ChangeColor(Color changeTo, int color)
+    public void ChangeColor(Color changeTo, int part)
     {
-        PartMaterials[color].SetColor("_BaseColor", changeTo);
-        ColorSliders[color].UpdateUI(changeTo);
+        if (PartGameObjects[part].TryGetComponent(out MeshRenderer meshR))
+        {
+            meshR.sharedMaterial.SetColor("_BaseColor", changeTo);
+        }
+        else
+        {
+            if (PartGameObjects[part].TryGetComponent(out SkinnedMeshRenderer skinnedMeshR))
+            {
+                skinnedMeshR.sharedMaterial.SetColor("_BaseColor", changeTo);
+            }
+        }
+
+        ColorSliders[part].UpdateUI(changeTo);
+        ChangeLastAction(Action.ActionType.COLOR, part, -1, changeTo);
     }
 
-    public void ChangeColorViaHex(string changeTo, int color)
+    public void ChangeColorViaHex(string changeTo, int part)
     {
         bool success = ColorUtility.TryParseHtmlString("#" + changeTo, out Color newCol);
         if (success)
         {
-            ChangeColor(newCol, color);
+            ChangeColor(newCol, part);
         }
     }
+    #endregion
+
+    #region UndoRedo
+    public void ChangeLastAction(Action.ActionType type, int part, int changedPart, Color changedColor)
+    {
+        lastAction.type = type;
+        lastAction.PartModified = part;
+        lastAction.PartChangedTo = changedPart;
+        lastAction.ColorChangedTo = changedColor;
+    }
+
     #endregion
 }

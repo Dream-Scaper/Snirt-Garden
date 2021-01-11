@@ -7,7 +7,7 @@ using System.IO;
 public class SnirtSaveLoader : MonoBehaviour
 {
     public static List<string> savedSnirts;
-    private const string defaultSnirt = "Snirt,0,0,0,0,D4D4D4,808080,353535,000000";
+    private const string defaultSnirt = "Snirt,0,0,0,0,808080,808080,808080,353535,D4D4D4,000000";
     public static string SavePath()
     {
         return Application.persistentDataPath + "/savedSnirts.txt";

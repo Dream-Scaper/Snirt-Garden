@@ -18,6 +18,8 @@ public class ScaleUIToChildren : MonoBehaviour
     private void Awake()
     {
         trans = GetComponent<RectTransform>();
+
+        Resize();
     }
 
     public void Resize()
