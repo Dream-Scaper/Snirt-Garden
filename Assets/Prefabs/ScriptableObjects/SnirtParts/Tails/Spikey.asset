@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Spikey
   m_EditorClassIdentifier: 
   partName: Spikey
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -3447124875808594052, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 8c6b97b3cbfa5dd489965e13df4a6701,
     type: 3}

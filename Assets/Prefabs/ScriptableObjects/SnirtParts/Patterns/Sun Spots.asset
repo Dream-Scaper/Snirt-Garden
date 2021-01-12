@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sun Spots
   m_EditorClassIdentifier: 
   partName: Sun Spots
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -3447124875808594052, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 0d00629229d04f9438f660f2b1e2b8e8,
     type: 3}

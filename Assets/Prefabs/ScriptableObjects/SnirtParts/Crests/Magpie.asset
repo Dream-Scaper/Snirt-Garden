@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Magpie
   m_EditorClassIdentifier: 
   partName: Magpie
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -8956196137295689327, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 96543015bb85b6a41aa644139422eba6,
     type: 3}

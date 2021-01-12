@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dino
   m_EditorClassIdentifier: 
   partName: Dino
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -8956196137295689327, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: ac369cbfa92648549accc47612c84ecd,
     type: 3}

@@ -13,12 +13,8 @@ public class ScaleUIToChildren : MonoBehaviour
     // a list of the children we want actively influencing our dimentions.
     public List<GameObject> children;
 
-    private RectTransform trans;
-
     private void Awake()
     {
-        trans = GetComponent<RectTransform>();
-
         Resize();
     }
 
@@ -30,8 +26,11 @@ public class ScaleUIToChildren : MonoBehaviour
 
             foreach (GameObject child in children)
             {
-                RectTransform rt = child.transform.GetComponent<RectTransform>();
-                totalNewHeight += rt.sizeDelta.y * rt.localScale.y;
+                if (child.activeInHierarchy)
+                {
+                    RectTransform rt = child.transform.GetComponent<RectTransform>();
+                    totalNewHeight += rt.sizeDelta.y * rt.localScale.y;
+                }
             }
 
             totalNewHeight += verticalPadding * 2;
@@ -45,8 +44,11 @@ public class ScaleUIToChildren : MonoBehaviour
 
             foreach (GameObject child in children)
             {
-                RectTransform rt = child.transform.GetComponent<RectTransform>();
-                totalNewWidth += rt.sizeDelta.x * rt.localScale.x;
+                if (child.activeInHierarchy)
+                {
+                    RectTransform rt = child.transform.GetComponent<RectTransform>();
+                    totalNewWidth += rt.sizeDelta.x * rt.localScale.x;
+                }
             }
 
             totalNewWidth += horizontalPadding * 2;

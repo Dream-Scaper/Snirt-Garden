@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Paradise
   m_EditorClassIdentifier: 
   partName: Paradise
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: 4976261428249354235, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: e5ce77ade5b86f446b6cc0cf7c5569b2,
     type: 3}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fishy
   m_EditorClassIdentifier: 
   partName: Fishy
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -7710950630946823545, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 59eefaa14dad8364c95ea88799bb6027,
     type: 3}

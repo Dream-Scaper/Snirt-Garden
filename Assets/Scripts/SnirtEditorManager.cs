@@ -8,25 +8,15 @@ using System.IO;
 
 public class SnirtEditorManager : MonoBehaviour
 {
-    //public enum SnirtParts { CREST, FRILL, TAIL, PATTERN }
-    //public enum SnirtColors { BODY, CRESTS, PATTERN, EYES }
-
     public string snirtName;
     public string[] randomName;
 
     [Header("Snirt Game Object Parts")]
     public GameObject[] PartGameObjects;
 
-    //[Header("Editable Materials")]
-    //public Material[] PartMaterials;
-
     [Header("Part Lists")]
-    public PartListSO Crests;
-    public PartListSO Frills;
-    public PartListSO Tails;
-    public PartListSO Patterns;
+    public PartListSO[] partLists;
 
-    private SnirtPartSO[][] AllParts;
     private int[] activeParts = new int[4];
 
     [Header("UI Elements")]
@@ -54,19 +44,13 @@ public class SnirtEditorManager : MonoBehaviour
 
     private void Awake()
     {
-        // Set up dropdowns to be fully populated with part options.
-        AllParts = new SnirtPartSO[][] { Crests.Parts, Frills.Parts, Tails.Parts, Patterns.Parts };
-
-        for (int i = 0; i < AllParts.Length; i++)
+        // Set part buttons to have the proper sprites and function.
+        for (int i = 0; i < partLists.Length; i++)
         {
-            List<string> partNames = new List<string>();
-
-            for (int j = 0; j < AllParts[i].Length; j++)
+            for (int j = 0; j < partLists[i].Parts.Length; j++)
             {
-                partNames.Add(AllParts[i][j].partName);
+                PartDropdowns[i].AddUIButton(partLists[i], j);
             }
-
-            PartDropdowns[i].ChangeDropDownOptions(partNames);
         }
 
         LoadFile();
@@ -209,10 +193,10 @@ public class SnirtEditorManager : MonoBehaviour
         activeParts[part] = changeTo;
         if (PartGameObjects[part].TryGetComponent(out MeshFilter meshF))
         {
-            meshF.sharedMesh = AllParts[part][Mathf.Min(activeParts[part], AllParts[part].Length - 1)].partMesh;
+            meshF.sharedMesh = partLists[part].Parts[activeParts[part]].partMesh;
         }
 
-        PartDropdowns[part].UpdateUI(activeParts[part]);
+        PartDropdowns[part].UpdateUI(activeParts[part], partLists[part].Parts[activeParts[part]].partName);
         ChangeLastAction(Action.ActionType.PART, part, changeTo, Color.clear);
     }
     #endregion

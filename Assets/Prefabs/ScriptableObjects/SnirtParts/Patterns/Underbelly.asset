@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Underbelly
   m_EditorClassIdentifier: 
   partName: Underbelly
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -8000874581314115603, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: daf63d36e9883a6418ae4a6d68b7aad7,
     type: 3}

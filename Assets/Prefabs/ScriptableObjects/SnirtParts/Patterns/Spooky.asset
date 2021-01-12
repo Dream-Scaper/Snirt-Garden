@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Spooky
   m_EditorClassIdentifier: 
   partName: Spooky
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: 4976261428249354235, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: f39e99e6a0133e84dac71f54d682673b,
     type: 3}

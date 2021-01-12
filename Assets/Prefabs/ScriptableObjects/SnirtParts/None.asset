@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: None
   m_EditorClassIdentifier: 
   partName: None
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -7540375415578217557, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: 0}

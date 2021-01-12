@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wireframe
   m_EditorClassIdentifier: 
   partName: Wireframe
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -3447124875808594052, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 6937847f57bb02641975e57b850efe4f,
     type: 3}

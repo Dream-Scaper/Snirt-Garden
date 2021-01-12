@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Unihorn
   m_EditorClassIdentifier: 
   partName: Unihorn
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -8692644167811440598, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: e6e97a7b56427c0409c5a75626673a06,
     type: 3}

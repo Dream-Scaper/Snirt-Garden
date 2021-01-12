@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Scales
   m_EditorClassIdentifier: 
   partName: Scales
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -7174054175299000151, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: a8b1e30e3a0b9f44082f0c7728b540dd,
     type: 3}

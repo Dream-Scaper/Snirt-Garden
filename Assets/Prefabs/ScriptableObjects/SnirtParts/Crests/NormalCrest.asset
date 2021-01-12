@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: NormalCrest
   m_EditorClassIdentifier: 
   partName: Normal
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -8000874581314115603, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: e78708ca9252de343903439e966ef86b,
     type: 3}

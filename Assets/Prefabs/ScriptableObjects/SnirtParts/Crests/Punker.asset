@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Punker
   m_EditorClassIdentifier: 
   partName: Punker
-  partMenuImage: {fileID: 0}
+  partMenuImage: {fileID: -7174054175299000151, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+    type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 1aea5e6c7a124f544b4a41afd81e517e,
     type: 3}

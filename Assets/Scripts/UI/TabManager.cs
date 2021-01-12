@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TabManager : MonoBehaviour
 {
-    public GameObject[] tabs;
+    public GameObject[] tabContent;
+    public Button[] tabButtons;
 
     private void Start()
     {
@@ -13,15 +15,17 @@ public class TabManager : MonoBehaviour
 
     public void ToggleActiveTab(int tabIndex)
     {
-        for (int i = 0; i < tabs.Length; i++)
+        for (int i = 0; i < tabContent.Length; i++)
         {
             if (i == tabIndex)
             {
-                tabs[i].SetActive(true);
+                tabContent[i].SetActive(true);
+                tabButtons[i].interactable = false;
                 continue;
             }
 
-            tabs[i].SetActive(false);
+            tabContent[i].SetActive(false);
+            tabButtons[i].interactable = true;
         }
     }
 }
