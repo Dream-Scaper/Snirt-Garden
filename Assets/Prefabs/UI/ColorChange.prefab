@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.90142995, g: 1, b: 0.9009434, a: 1}
+  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1398,10 +1398,10 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 3
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 55, y: 55}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 3
@@ -1445,7 +1445,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 535, y: 675}
+  m_SizeDelta: {x: 535, y: 705}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1236401138653705697
 CanvasRenderer:
@@ -1468,7 +1468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6745283, g: 0.7858805, b: 1, a: 1}
+  m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1498,13 +1498,41 @@ MonoBehaviour:
   manager: {fileID: 0}
   color: 0
   colorSwatch: {fileID: 4004044548187968399}
-  startingColor: {r: 0.83137256, g: 0.83137256, b: 0.83137256, a: 1}
   hexEntry: {fileID: 5250819106204903214}
   hexEntryPlaceholder: Hex...
   sliders:
   - {fileID: 5250819105378733726}
   - {fileID: 5250819105662707134}
   - {fileID: 5250819107303284707}
+  startingColor: {r: 0.83137256, g: 0.83137256, b: 0.83137256, a: 1}
+  paletteHolder: {fileID: 5963153217570986095}
+  colorPaletteButtonPrefab: {fileID: 4306973753080008043, guid: 91221ee3e7ec0a247a45262ffd60bfe8,
+    type: 3}
+  paletteColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.28235295, b: 0, a: 1}
+  - {r: 1, g: 0.41568628, b: 0, a: 1}
+  - {r: 1, g: 0.5647059, b: 0, a: 1}
+  - {r: 1, g: 0.73333335, b: 0, a: 1}
+  - {r: 1, g: 0.84705883, b: 0, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
+  - {r: 0.73333335, g: 1, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.6862745, a: 1}
+  - {r: 0, g: 1, b: 1, a: 1}
+  - {r: 0, g: 0.76862746, b: 1, a: 1}
+  - {r: 0, g: 0.4392157, b: 1, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 0.43137255, g: 0, b: 1, a: 1}
+  - {r: 0.69803923, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.31764707, b: 1, a: 1}
+  - {r: 1, g: 0.62352943, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.83137256, g: 0.83137256, b: 0.83137256, a: 1}
+  - {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+  - {r: 0.20784314, g: 0.20784314, b: 0.20784314, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &6958978935472058497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1522,7 +1550,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -1545,7 +1573,7 @@ MonoBehaviour:
   scaleHorizontally: 0
   scaleVertically: 1
   horizontalPadding: 0
-  verticalPadding: 5
+  verticalPadding: 0
   children:
   - {fileID: 3142197608272905132}
   - {fileID: 8064159779543732257}
@@ -1965,7 +1993,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 565}
+  m_SizeDelta: {x: 0, y: 585}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5155786860048640861
 CanvasRenderer:
@@ -1988,7 +2016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7971698, b: 0.7971698, a: 1}
+  m_Color: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2016,8 +2044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
+    m_Left: 10
+    m_Right: 10
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
@@ -2043,7 +2071,7 @@ MonoBehaviour:
   scaleHorizontally: 0
   scaleVertically: 1
   horizontalPadding: 0
-  verticalPadding: 0
+  verticalPadding: 10
   children:
   - {fileID: 7870893992147072085}
   - {fileID: 4739788947930043672}

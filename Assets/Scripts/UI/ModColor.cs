@@ -9,14 +9,29 @@ public class ModColor : MonoBehaviour
     public SnirtEditorManager manager;
     public int color;
 
+    [Header("UI Elements")]
     public Image colorSwatch;
-
-    public Color startingColor;
 
     public TMP_InputField hexEntry;
     public string hexEntryPlaceholder = "Hex...";
 
     public Slider[] sliders;
+
+    [Header("Default and Palette Colors")]
+    public Color startingColor;
+
+    public GameObject paletteHolder;
+    public GameObject colorPaletteButtonPrefab;
+
+    public Color[] paletteColors;
+
+    private void Awake()
+    {
+        for (int i = 0; i < paletteColors.Length; i++)
+        {
+            CreatePaletteButton(i);
+        }
+    }
 
     public void UpdateUI(Color updateTo)
     {
@@ -63,5 +78,19 @@ public class ModColor : MonoBehaviour
     public void DisplayPlaceholderText()
     {
         hexEntry.placeholder.GetComponent<TextMeshProUGUI>().text = hexEntryPlaceholder + " " + ColorUtility.ToHtmlStringRGB(colorSwatch.color);
+    }
+
+    public void EditColorFromPaletteButton(int colorIndex)
+    {
+        manager.ChangeColor(paletteColors[colorIndex], color);
+    }
+
+    public void CreatePaletteButton(int colorIndex)
+    {
+        GameObject newButton = Instantiate(colorPaletteButtonPrefab, paletteHolder.transform);
+
+        newButton.GetComponent<Image>().color = paletteColors[colorIndex];
+        newButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        newButton.GetComponent<Button>().onClick.AddListener(delegate { EditColorFromPaletteButton(colorIndex); });
     }
 }
