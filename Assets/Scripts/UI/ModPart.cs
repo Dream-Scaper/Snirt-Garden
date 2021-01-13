@@ -41,6 +41,6 @@ public class ModPart : MonoBehaviour
 
     public void ChangePart(int changeTo)
     {
-        manager.ChangePart(changeTo, part);
+        manager.ChangePart(changeTo, part, true);
     }
 }

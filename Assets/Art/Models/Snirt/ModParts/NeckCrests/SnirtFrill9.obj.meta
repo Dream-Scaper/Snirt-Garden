@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: defaultMat
-    second: {fileID: 2100000, guid: 5be64fc884406034c9f32363d81297b5, type: 2}
+    second: {fileID: 2100000, guid: be33a251bd398944294f9a233e83e891, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -73,7 +73,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []

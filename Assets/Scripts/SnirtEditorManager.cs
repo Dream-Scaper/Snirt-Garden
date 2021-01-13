@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.EventSystems;
 
 public class SnirtEditorManager : MonoBehaviour
 {
@@ -28,8 +29,13 @@ public class SnirtEditorManager : MonoBehaviour
     [Header("Required Prefabs")]
     public GameObject SaveFileUI;
 
-    [Header("TESTING")]
+    [Header("Undo/Redo")]
+    public Button undoButton;
+    public Button redoButton;
+
+    public int actionIndex;
     public Action lastAction;
+    public List<Action> history;
 
     [System.Serializable]
     public struct Action
@@ -44,6 +50,8 @@ public class SnirtEditorManager : MonoBehaviour
 
     private void Awake()
     {
+        history = new List<Action>();
+
         // Set part buttons to have the proper sprites and function.
         for (int i = 0; i < partLists.Length; i++)
         {
@@ -80,19 +88,21 @@ public class SnirtEditorManager : MonoBehaviour
         {
             if (int.TryParse(snirtTraits[i + 1], out int part))
             {
-                ChangePart(part, i);
+                ChangePart(part, i, false);
             }
             else
             {
-                ChangePart(0, i);
+                ChangePart(0, i, false);
             }
 
         }
 
         for (int i = 0; i < PartGameObjects.Length; i++)
         {
-            ChangeColorViaHex(snirtTraits[i + 5], i);
+            ChangeColorViaHex(snirtTraits[i + 5], i, false);
         }
+
+        ClearHistory();
     }
 
     public void DeleteSnirt(int index)
@@ -105,7 +115,7 @@ public class SnirtEditorManager : MonoBehaviour
     }
 
     public void SaveSnirt()
-    {   
+    {
         // Make a string out of all the snirt properties.
         string snirtTraits = snirtName.Replace(',', ' '); // Just in case there are any commas, replace them with spaces.
 
@@ -188,7 +198,7 @@ public class SnirtEditorManager : MonoBehaviour
     #endregion
 
     #region Part
-    public void ChangePart(int changeTo, int part)
+    public void ChangePart(int changeTo, int part, bool recordAction)
     {
         activeParts[part] = changeTo;
         if (PartGameObjects[part].TryGetComponent(out MeshFilter meshF))
@@ -197,12 +207,16 @@ public class SnirtEditorManager : MonoBehaviour
         }
 
         PartDropdowns[part].UpdateUI(activeParts[part], partLists[part].Parts[activeParts[part]].partName);
-        ChangeLastAction(Action.ActionType.PART, part, changeTo, Color.clear);
+
+        if (recordAction)
+        {
+            RecordLastAction(Action.ActionType.PART, part, changeTo, Color.clear);
+        }
     }
     #endregion
 
     #region Color
-    public void ChangeColor(Color changeTo, int part)
+    public void ChangeColor(Color changeTo, int part, bool recordAction)
     {
         if (PartGameObjects[part].TryGetComponent(out MeshRenderer meshR))
         {
@@ -217,27 +231,73 @@ public class SnirtEditorManager : MonoBehaviour
         }
 
         ColorSliders[part].UpdateUI(changeTo);
-        ChangeLastAction(Action.ActionType.COLOR, part, -1, changeTo);
+
+        if (recordAction)
+        {
+            RecordLastAction(Action.ActionType.COLOR, part, -1, changeTo);
+        }
     }
 
-    public void ChangeColorViaHex(string changeTo, int part)
+    public void ChangeColorViaHex(string changeTo, int part, bool recordAction)
     {
         bool success = ColorUtility.TryParseHtmlString("#" + changeTo, out Color newCol);
         if (success)
         {
-            ChangeColor(newCol, part);
+            ChangeColor(newCol, part, recordAction);
         }
     }
     #endregion
 
     #region UndoRedo
-    public void ChangeLastAction(Action.ActionType type, int part, int changedPart, Color changedColor)
+    public void RecordLastAction(Action.ActionType type, int part, int changedPart, Color changedColor)
     {
-        lastAction.type = type;
-        lastAction.PartModified = part;
-        lastAction.PartChangedTo = changedPart;
-        lastAction.ColorChangedTo = changedColor;
+        Action incomingAction = new Action { type = type, PartModified = part, PartChangedTo = changedPart, ColorChangedTo = changedColor };
+
+        if (!(lastAction.type == incomingAction.type && lastAction.PartModified == incomingAction.PartModified && lastAction.PartChangedTo == incomingAction.PartChangedTo && lastAction.ColorChangedTo == incomingAction.ColorChangedTo))
+        {
+            // TODO
+            // check if the index is at the end of the list
+            // if its not, delete all list entries ahead of this one
+
+            // add last to history
+            // make incoming last
+        }
     }
 
+    public void UndoAction()
+    {
+        // TODO
+        // check if the last action is part or color
+        // if from there
+        // use the action's values in calling changepart/color respectively
+        // decrement the index
+
+        UpdateActionButtons();
+    }
+
+    public void RedoAction()
+    {
+        // TODO
+        // check if the last action is part or color
+        // if from there
+        // use the action's values in calling changepart/color respectively
+        // increment the index
+
+        UpdateActionButtons();
+    }
+
+    private void ClearHistory()
+    {
+        history.Clear();
+        actionIndex = 0;
+
+        UpdateActionButtons();
+    }
+
+    private void UpdateActionButtons()
+    {
+        undoButton.interactable = actionIndex != 0;
+        redoButton.interactable = actionIndex != history.Count;
+    }
     #endregion
 }

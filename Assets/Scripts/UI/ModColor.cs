@@ -41,17 +41,6 @@ public class ModColor : MonoBehaviour
         DisplayPlaceholderText();
     }
 
-    public void EditColor()
-    {
-        manager.ChangeColor(new Color(sliders[0].value, sliders[1].value, sliders[2].value, 1.0f), color);
-    }
-
-    public void EditColorViaHex()
-    {
-        manager.ChangeColorViaHex(hexEntry.text, color);
-        hexEntry.text = "";
-    }
-
     public void EditSliders(Color setColor)
     {
         sliders[0].value = setColor.r;
@@ -59,15 +48,31 @@ public class ModColor : MonoBehaviour
         sliders[2].value = setColor.b;
     }
 
+    public void EditColorViaSliders(bool countAction)
+    {
+        manager.ChangeColor(new Color(sliders[0].value, sliders[1].value, sliders[2].value, 1.0f), color, countAction);
+    }
+
+    public void EditColorViaHex()
+    {
+        manager.ChangeColorViaHex(hexEntry.text, color, true);
+        hexEntry.text = "";
+    }
+
+    public void EditColorFromPaletteButton(int colorIndex)
+    {
+        manager.ChangeColor(paletteColors[colorIndex], color, true);
+    }
+
     public void RandomColor()
     {
         Color randyColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
-        manager.ChangeColor(randyColor, color);
+        manager.ChangeColor(randyColor, color, true);
     }
 
     public void ResetColors()
     {
-        manager.ChangeColor(startingColor, color);
+        manager.ChangeColor(startingColor, color, true);
     }
 
     public void DisplayCurrentColor()
@@ -80,17 +85,18 @@ public class ModColor : MonoBehaviour
         hexEntry.placeholder.GetComponent<TextMeshProUGUI>().text = hexEntryPlaceholder + " " + ColorUtility.ToHtmlStringRGB(colorSwatch.color);
     }
 
-    public void EditColorFromPaletteButton(int colorIndex)
-    {
-        manager.ChangeColor(paletteColors[colorIndex], color);
-    }
-
     public void CreatePaletteButton(int colorIndex)
     {
         GameObject newButton = Instantiate(colorPaletteButtonPrefab, paletteHolder.transform);
 
+        newButton.GetComponent<RectTransform>().Rotate(new Vector3(0, 0, Random.Range(0f, 360f)));
         newButton.GetComponent<Image>().color = paletteColors[colorIndex];
         newButton.GetComponent<Button>().onClick.RemoveAllListeners();
         newButton.GetComponent<Button>().onClick.AddListener(delegate { EditColorFromPaletteButton(colorIndex); });
+    }
+
+    public void TestMethod()
+    {
+        Debug.Log("Woah!!");
     }
 }

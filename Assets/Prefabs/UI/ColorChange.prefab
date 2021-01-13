@@ -1307,6 +1307,135 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5741550841324934171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250819105378733724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 14
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2799877163902299557}
+          m_MethodName: EditColorViaSliders
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2799877163902299557}
+          m_MethodName: EditColorViaSliders
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+--- !u!114 &5964166717194258444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250819105662707132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 14
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2799877163902299557}
+          m_MethodName: EditColorViaSliders
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2799877163902299557}
+          m_MethodName: EditColorViaSliders
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+--- !u!114 &1017151798813290378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250819107303284705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 14
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2799877163902299557}
+          m_MethodName: EditColorViaSliders
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2799877163902299557}
+          m_MethodName: EditColorViaSliders
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &5963153217570986095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,7 +1472,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 200}
+  m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &229490405637852175
 CanvasRenderer:
@@ -1401,10 +1530,10 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 55, y: 55}
+  m_CellSize: {x: 70, y: 70}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
-  m_ConstraintCount: 3
+  m_ConstraintCount: 4
 --- !u!1 &6808049237631435876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,7 +1574,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 535, y: 705}
+  m_SizeDelta: {x: 535, y: 785}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1236401138653705697
 CanvasRenderer:
@@ -1835,7 +1964,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5025058693489448950
 MonoBehaviour:
@@ -1993,7 +2122,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 585}
+  m_SizeDelta: {x: 0, y: 685}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5155786860048640861
 CanvasRenderer:
@@ -2441,7 +2570,17 @@ PrefabInstance:
     - target: {fileID: 3038396608571040953, guid: d19310b7ccc042b4e9511902c93c608e,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EditColor
+      value: EditColorViaSliders
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038396608571040953, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038396608571040953, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3038396608581370382, guid: d19310b7ccc042b4e9511902c93c608e,
         type: 3}
@@ -2502,6 +2641,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2799877163902299557}
+    - target: {fileID: 3038396608787455203, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EditColorViaHex
       objectReference: {fileID: 0}
     - target: {fileID: 3038396608821841816, guid: d19310b7ccc042b4e9511902c93c608e,
         type: 3}
@@ -2536,7 +2680,12 @@ PrefabInstance:
     - target: {fileID: 3038396608821841817, guid: d19310b7ccc042b4e9511902c93c608e,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EditColor
+      value: EditColorViaSliders
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038396608821841817, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3038396609338707208, guid: d19310b7ccc042b4e9511902c93c608e,
         type: 3}
@@ -2560,8 +2709,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3038396609338707209, guid: d19310b7ccc042b4e9511902c93c608e,
         type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038396609338707209, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
       propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2799877163902299557}
+    - target: {fileID: 3038396609338707209, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayCurrentColor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038396609338707209, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038396609338707209, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038396609338707209, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2799877163902299557}
+    - target: {fileID: 3038396609338707209, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayPlaceholderText
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038396609338707209, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_OnDeselect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3038396609342207440, guid: d19310b7ccc042b4e9511902c93c608e,
         type: 3}
@@ -2876,7 +3060,12 @@ PrefabInstance:
     - target: {fileID: 3038396610404595140, guid: d19310b7ccc042b4e9511902c93c608e,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EditColor
+      value: EditColorViaSliders
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038396610404595140, guid: d19310b7ccc042b4e9511902c93c608e,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3038396610404595143, guid: d19310b7ccc042b4e9511902c93c608e,
         type: 3}
@@ -2906,15 +3095,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3038396609342207444, guid: d19310b7ccc042b4e9511902c93c608e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d19310b7ccc042b4e9511902c93c608e, type: 3}
---- !u!1 &5250819106216091636 stripped
+--- !u!1 &5250819105378733724 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3038396609342207443, guid: d19310b7ccc042b4e9511902c93c608e,
-    type: 3}
-  m_PrefabInstance: {fileID: 7130365573905508903}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &5250819106216091639 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3038396609342207440, guid: d19310b7ccc042b4e9511902c93c608e,
+  m_CorrespondingSourceObject: {fileID: 3038396608571040955, guid: d19310b7ccc042b4e9511902c93c608e,
     type: 3}
   m_PrefabInstance: {fileID: 7130365573905508903}
   m_PrefabAsset: {fileID: 0}
@@ -2924,36 +3107,60 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 7130365573905508903}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5250819105378733724}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5250819105662707132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3038396608821841819, guid: d19310b7ccc042b4e9511902c93c608e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7130365573905508903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5250819105662707134 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3038396608821841817, guid: d19310b7ccc042b4e9511902c93c608e,
     type: 3}
   m_PrefabInstance: {fileID: 7130365573905508903}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5250819105662707132}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5250819106216091636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3038396609342207443, guid: d19310b7ccc042b4e9511902c93c608e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7130365573905508903}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5250819107303284705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3038396610404595142, guid: d19310b7ccc042b4e9511902c93c608e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7130365573905508903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5250819107303284707 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3038396610404595140, guid: d19310b7ccc042b4e9511902c93c608e,
     type: 3}
   m_PrefabInstance: {fileID: 7130365573905508903}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5250819107303284705}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5250819106216091639 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3038396609342207440, guid: d19310b7ccc042b4e9511902c93c608e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7130365573905508903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5250819106204903214 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3038396609338707209, guid: d19310b7ccc042b4e9511902c93c608e,
