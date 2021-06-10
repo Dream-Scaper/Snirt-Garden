@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NormalTail
   m_EditorClassIdentifier: 
   partName: Normal
-  partMenuImage: {fileID: -8000874581314115603, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: 8928779344110827583, guid: aacc4abd1029fdf4f945fb9a6f74c370,
     type: 3}
   partMesh: {fileID: -2432090755550338912, guid: aa1ce619d46324a4f87d31e90ac1c1ad,
     type: 3}

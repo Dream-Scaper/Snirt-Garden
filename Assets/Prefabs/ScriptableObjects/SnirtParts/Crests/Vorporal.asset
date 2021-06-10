@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Vorporal
   m_EditorClassIdentifier: 
   partName: Vorporal
-  partMenuImage: {fileID: -3447124875808594052, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: 2362574434151433143, guid: 7cab2b8a8dc6f8345a1f14d8f4708509,
     type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 6573fbd66d2c2f84585899a49be71933,
     type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mane
   m_EditorClassIdentifier: 
   partName: Mane
-  partMenuImage: {fileID: 3367852410531774148, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: 4353835184163690367, guid: 56ac1f62b0771ca4fbe1d74f57c2b16b,
     type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 661d20c745a4a9a4a8cbdcb79fd253d5,
     type: 3}

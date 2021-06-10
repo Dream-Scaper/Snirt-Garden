@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Runic
   m_EditorClassIdentifier: 
   partName: Runic
-  partMenuImage: {fileID: -7174054175299000151, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: -8626817951203973657, guid: 56ac1f62b0771ca4fbe1d74f57c2b16b,
     type: 3}
   partMesh: {fileID: -2432090755550338912, guid: d6cc63103e447924aac4e793db0c530a,
     type: 3}

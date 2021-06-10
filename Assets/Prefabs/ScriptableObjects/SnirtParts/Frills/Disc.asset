@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Disc
   m_EditorClassIdentifier: 
   partName: Disc
-  partMenuImage: {fileID: -7710950630946823545, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: 3506812157218261686, guid: 56ac1f62b0771ca4fbe1d74f57c2b16b,
     type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 831e48ba0d010424291974a7258943b6,
     type: 3}

@@ -26,7 +26,7 @@ public class SavedSnirtUI : MonoBehaviour
         }
 
         loadButton.onClick.RemoveAllListeners();
-        loadButton.onClick.AddListener(delegate { manager.LoadSnirt(index); });
+        loadButton.onClick.AddListener(delegate { manager.LoadSnirt(index, true, true); });
 
         // The first Snirt in the list can never be deleted in-game.
         if (index != 0)

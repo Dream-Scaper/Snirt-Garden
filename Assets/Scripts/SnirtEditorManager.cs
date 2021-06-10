@@ -40,12 +40,7 @@ public class SnirtEditorManager : MonoBehaviour
     [System.Serializable]
     public struct Action
     {
-        public ActionType type;
-        public int PartModified;
-        public int PartChangedTo;
-        public Color ColorChangedTo;
-
-        public enum ActionType { PART, COLOR/*, NAME*/ };
+        public string snirtData;
     }
 
     private void Awake()
@@ -62,7 +57,7 @@ public class SnirtEditorManager : MonoBehaviour
         }
 
         LoadFile();
-        LoadSnirt(0);
+        LoadSnirt(0, true, true);
     }
 
     #region Save/Load
@@ -74,10 +69,13 @@ public class SnirtEditorManager : MonoBehaviour
         PopulateSaveUI();
     }
 
-    public void LoadSnirt(int index)
+    public void LoadSnirt(int index, bool recordAction, bool clearHistory)
     {
-        string snirtData = SnirtSaveLoader.savedSnirts[index];
+        LoadSnirtFromString(SnirtSaveLoader.savedSnirts[index], recordAction, clearHistory);
+    }
 
+    private void LoadSnirtFromString(string snirtData, bool recordAction, bool clearHistory)
+    {
         // Use the array created by the inital loading of the file.
         // Set all values to the snirt at the index and update all ui.
         string[] snirtTraits = snirtData.Split(',');
@@ -102,7 +100,15 @@ public class SnirtEditorManager : MonoBehaviour
             ChangeColorViaHex(snirtTraits[i + 5], i, false);
         }
 
-        ClearHistory();
+        if (recordAction)
+        {
+            if (clearHistory)
+            {
+                ClearHistory();
+            }
+
+            RecordLastAction(SnirtTraits());
+        }
     }
 
     public void DeleteSnirt(int index)
@@ -116,7 +122,13 @@ public class SnirtEditorManager : MonoBehaviour
 
     public void SaveSnirt()
     {
-        // Make a string out of all the snirt properties.
+        SnirtSaveLoader.SaveSnirt(SnirtTraits());
+
+        PopulateSaveUI();
+    }
+
+    private string SnirtTraits()
+    {
         string snirtTraits = snirtName.Replace(',', ' '); // Just in case there are any commas, replace them with spaces.
 
         if (snirtTraits == "")
@@ -144,9 +156,7 @@ public class SnirtEditorManager : MonoBehaviour
             }
         }
 
-        SnirtSaveLoader.SaveSnirt(snirtTraits);
-
-        PopulateSaveUI();
+        return snirtTraits;
     }
 
     private void PopulateSaveUI()
@@ -200,17 +210,20 @@ public class SnirtEditorManager : MonoBehaviour
     #region Part
     public void ChangePart(int changeTo, int part, bool recordAction)
     {
-        activeParts[part] = changeTo;
-        if (PartGameObjects[part].TryGetComponent(out MeshFilter meshF))
+        if (part < partLists.Length)
         {
-            meshF.sharedMesh = partLists[part].Parts[activeParts[part]].partMesh;
-        }
+            activeParts[part] = changeTo;
+            if (PartGameObjects[part].TryGetComponent(out MeshFilter meshF))
+            {
+                meshF.sharedMesh = partLists[part].Parts[activeParts[part]].partMesh;
+            }
 
-        PartDropdowns[part].UpdateUI(activeParts[part], partLists[part].Parts[activeParts[part]].partName);
+            PartDropdowns[part].UpdateUI(activeParts[part], partLists[part].Parts[activeParts[part]].partName);
 
-        if (recordAction)
-        {
-            RecordLastAction(Action.ActionType.PART, part, changeTo, Color.clear);
+            if (recordAction)
+            {
+                RecordLastAction(SnirtTraits());
+            }
         }
     }
     #endregion
@@ -234,7 +247,7 @@ public class SnirtEditorManager : MonoBehaviour
 
         if (recordAction)
         {
-            RecordLastAction(Action.ActionType.COLOR, part, -1, changeTo);
+            RecordLastAction(SnirtTraits());
         }
     }
 
@@ -249,39 +262,50 @@ public class SnirtEditorManager : MonoBehaviour
     #endregion
 
     #region UndoRedo
-    public void RecordLastAction(Action.ActionType type, int part, int changedPart, Color changedColor)
+    public void RecordLastAction(string snirtSnapshot)
     {
-        Action incomingAction = new Action { type = type, PartModified = part, PartChangedTo = changedPart, ColorChangedTo = changedColor };
+        Action incomingAction = new Action { snirtData = snirtSnapshot };
 
-        if (!(lastAction.type == incomingAction.type && lastAction.PartModified == incomingAction.PartModified && lastAction.PartChangedTo == incomingAction.PartChangedTo && lastAction.ColorChangedTo == incomingAction.ColorChangedTo))
+        if (!(lastAction.snirtData == incomingAction.snirtData))
         {
-            // TODO
-            // check if the index is at the end of the list
-            // if its not, delete all list entries ahead of this one
+            // Increment action index.
+            actionIndex = Math.Min(actionIndex + 1, history.Count);
 
-            // add last to history
-            // make incoming last
+            // Check if the index is at the end of the list.
+            // If its not, delete all list entries ahead of this one.
+            if (actionIndex < history.Count - 1)
+            {
+                // If the list is longer than our current index...
+                history.RemoveRange(actionIndex, (history.Count - actionIndex));
+            }
+
+            // Add last to history.
+            history.Add(incomingAction);
+
+            // Make last action the incoming one.
+            lastAction = incomingAction;
+
+            // Update the UI.
+            UpdateActionButtons();
         }
     }
 
-    public void UndoAction()
+    public void UndoRedo(bool redo)
     {
-        // TODO
-        // check if the last action is part or color
-        // if from there
-        // use the action's values in calling changepart/color respectively
-        // decrement the index
+        if (redo)
+        {
+            // Increment the index.
+            actionIndex = Math.Min(actionIndex + 1, history.Count - 1);
+        }
+        else
+        {
+            // Decrement the index.
+            actionIndex = Math.Max(actionIndex - 1, 0);
+        }
 
-        UpdateActionButtons();
-    }
-
-    public void RedoAction()
-    {
-        // TODO
-        // check if the last action is part or color
-        // if from there
-        // use the action's values in calling changepart/color respectively
-        // increment the index
+        // Check if the last action is part or color.
+        // Use the action's values in calling changepart/color respectively.
+        LoadSnirtFromString(history[actionIndex].snirtData, false, false);
 
         UpdateActionButtons();
     }
@@ -297,7 +321,7 @@ public class SnirtEditorManager : MonoBehaviour
     private void UpdateActionButtons()
     {
         undoButton.interactable = actionIndex != 0;
-        redoButton.interactable = actionIndex != history.Count;
+        redoButton.interactable = actionIndex != history.Count - 1;
     }
     #endregion
 }

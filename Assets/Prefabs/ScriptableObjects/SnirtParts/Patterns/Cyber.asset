@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cyber
   m_EditorClassIdentifier: 
   partName: Cyber
-  partMenuImage: {fileID: -4914090425809717773, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: 1810633728305061548, guid: c92fdcb8986dacd43be701cf97331fe6,
     type: 3}
   partMesh: {fileID: -2432090755550338912, guid: be8b5419008227f4fa4a5fa5f5f0c638,
     type: 3}

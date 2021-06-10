@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: None
   m_EditorClassIdentifier: 
   partName: None
-  partMenuImage: {fileID: -7540375415578217557, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: 1106846502005449354, guid: 7cab2b8a8dc6f8345a1f14d8f4708509,
     type: 3}
   partMesh: {fileID: 0}

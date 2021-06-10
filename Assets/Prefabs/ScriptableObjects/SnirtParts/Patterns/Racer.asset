@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Racer
   m_EditorClassIdentifier: 
   partName: Racer
-  partMenuImage: {fileID: -7710950630946823545, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: -2855153772676359606, guid: c92fdcb8986dacd43be701cf97331fe6,
     type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 1ac9b9afdf1124a49bd2ab7d3ac9852f,
     type: 3}

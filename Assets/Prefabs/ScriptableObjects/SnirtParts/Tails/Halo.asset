@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Halo
   m_EditorClassIdentifier: 
   partName: Halo
-  partMenuImage: {fileID: 3367852410531774148, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: 25120619714224668, guid: aacc4abd1029fdf4f945fb9a6f74c370,
     type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 10a39ce8ff2aa06439a3368ff6ab3d8b,
     type: 3}

@@ -19,7 +19,7 @@ public class SpawnedSnirt : MonoBehaviour
     public MeshFilter Tail;
     public MeshFilter Pattern;
 
-    public MeshRenderer[] BodyParts;
+    public SkinnedMeshRenderer BodyPart;
     public MeshRenderer[] CrestParts;
     public MeshRenderer[] PatternParts;
     public MeshRenderer[] EyeParts;
@@ -43,10 +43,8 @@ public class SpawnedSnirt : MonoBehaviour
         EyesMat = new Material(originalEyesMat);
         EyesMat.SetColor("_BaseColor", newEyeColor);
 
-        foreach (MeshRenderer mr in BodyParts)
-        {
-            mr.sharedMaterial = BodyMat;
-        }
+
+        BodyPart.sharedMaterial = BodyMat;
 
         foreach (MeshRenderer mr in CrestParts)
         {

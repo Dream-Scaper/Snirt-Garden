@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Clover
   m_EditorClassIdentifier: 
   partName: Clover
-  partMenuImage: {fileID: -8956196137295689327, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: -3649025368977179848, guid: 56ac1f62b0771ca4fbe1d74f57c2b16b,
     type: 3}
   partMesh: {fileID: -2432090755550338912, guid: 2708e6773bfbe314da8becb55b7eb884,
     type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pom-Pom
   m_EditorClassIdentifier: 
   partName: Pom-Pom
-  partMenuImage: {fileID: -8692644167811440598, guid: c8d95c0f0ecab8c4fa675c0d5d942802,
+  partMenuImage: {fileID: -7484979947447980276, guid: aacc4abd1029fdf4f945fb9a6f74c370,
     type: 3}
   partMesh: {fileID: -2432090755550338912, guid: fdd4c3c3664c4ac47adf3ab1781e075e,
     type: 3}
